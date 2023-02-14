@@ -1,0 +1,29 @@
+.newPostPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.newPostTitleRow {
+    width: 80%;
+}
+.titleInput {
+    width: 80%;
+    margin-bottom: 30px;
+}
+.newPostBox {
+    width: 80%;
+    position: relative;
+}
+.cancelButton {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+}
+.newPostButton {
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+}
+.editorBox{
+    border: 1px solid black;
+}

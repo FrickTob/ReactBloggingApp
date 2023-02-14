@@ -1,0 +1,28 @@
+.signUpPage {
+    display: flex;
+    margin-top: 200px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.signUpBox {
+    background-color: #666666;
+    box-shadow: 0px 0px 5px black;
+    width: 60%;
+    padding-left: 20px;
+}
+.signUpForm {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 30px;
+}
+.signUpForm label {
+    font-size: 20px;
+}
+.signUpForm input {
+}
+.signUpForm button {
+    margin-top: 20px;
+    width: 200px;
+}

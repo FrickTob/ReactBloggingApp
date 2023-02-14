@@ -1,0 +1,51 @@
+.titleRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #999999;
+    box-shadow: 0px 0px 5px black;
+    height: 50px;
+}
+.newEntryLink {
+    color: black;
+    text-decoration: none;
+    transition: color .15s, text-decoration .15s;
+    margin-right: 10px;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-color: white;
+}
+.newEntryLink:hover {
+    color: orange;
+    text-decoration: underline;
+}
+
+.filterRow {
+    display: flex;
+    align-items: center;
+}
+.filterText {
+    margin-right: 30px;
+}
+.filterRow button {
+    margin-left: 15px;
+}
+.entryGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px 30px;
+    margin-left: 30px; margin-right: 30px;
+    margin-bottom: 30px;
+}
+.entry {
+    text-align: center;
+    box-shadow: -1px 1px 4px black;
+    border-radius: 5%;
+    aspect-ratio: 1/1;
+    background-color: lightblue;
+    transition: opacity .5s;
+}
+.entry:hover {
+    cursor: pointer;
+    opacity: .7;
+}
