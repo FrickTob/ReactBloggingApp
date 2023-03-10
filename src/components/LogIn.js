@@ -1,15 +1,17 @@
-import {useRef, useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {Link} from "react-router-dom"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 
 
 const LogIn = (props) => {
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
+    const navigate = useNavigate()
 
     useEffect(() => {
         const auth = getAuth();
-        if(auth) {setSuccess(true)}
+        if(auth.currentUser) {setSuccess(true)}
     }, [])
 
     const handleSubmit = async (e) => {
@@ -27,15 +29,14 @@ const LogIn = (props) => {
             // navigate to home page after successful login
         }).catch((error) => {
             console.error(error);
+            setErrMsg('' + error)
         });
 
     }
     return (
         <>
         {success ? (
-            <section>
-                <h1>Login Success</h1>
-            </section>
+            navigate('/')
         ) : (
         <section className='loginPage'>
             <div className='loginBox'>
@@ -53,6 +54,7 @@ const LogIn = (props) => {
                 <span className="line"><Link to="/signup">Sign Up</Link>
                 </span>
             </p>
+            <p className='loginErrorMSG'>{errMsg}</p>
             </div>
             
         </section>

@@ -1,6 +1,9 @@
 body {
     margin: 0;
     margin-top: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #333333;
+    color: whitesmoke;
 }
 
 header {
@@ -34,18 +37,26 @@ header {
     color:orange;
 }
 
-.logInLink {
+.logInLink, .signOutButton {
     font-size: 20px;
     transition: color .15s, text-decoration .15s;
 }
-.logInLink:hover {
+.logInLink:hover, .signOutButton:hover {
     text-decoration: underline;
     color: orange;
     background-color: gray;
 }
-
+.signOutButton {
+    background-color: #666666;
+    border: none;
+    color: whitesmoke;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    height: 100%;
+}
 .credits {
-    display: flex;
-    align-items: center;
-    justify-content: right;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    
 }

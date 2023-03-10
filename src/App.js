@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
-import { Route, Routes, Navigate, useNavigate, useLocation} from "react-router-dom";
-import { Auth, getAuth } from "firebase/auth";
+import { Route, Routes, useNavigate, useLocation} from "react-router-dom";
+import { getAuth } from "firebase/auth";
 import './styles/App.css'
 import './styles/login.css'
 import './styles/signup.css'
@@ -14,7 +14,6 @@ import HomePage from './components/HomePage'
 import NavBar from "./components/NavBar";
 import NewEntry from "./components/NewEntry";
 import Footer from "./components/Footer";
-import BlogView from "./components/BlogView";
 
 // make protected routes and start on login screen
 // update nav page based on user login
@@ -28,18 +27,21 @@ const App = () => {
     useEffect(() => {
         const auth = getAuth()
         auth.onAuthStateChanged(function(user) {
+            console.log("here")
             if(user) {
                 setLoggedIn(true)
+                console.log('a')
         }
-            else {setLoggedIn(false)}
+            else {setLoggedIn(false)
+                console.log('b')}
         })
-        if (location.pathname != "/signup" && !loggedIn) {navigate('/login')}
-    }, [navigate, loggedIn])
+        if (location.pathname !== "/signup" && !loggedIn) {navigate('/login')}
+    }, [navigate, loggedIn, location.pathname])
 
 
     return(
     <>
-        <NavBar />
+        <NavBar isLoggedIn={loggedIn} />
         <Routes>
             <Route path = "/" element={<HomePage />} />
             <Route path = "/login" element={<LogIn />}/>

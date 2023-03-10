@@ -13,6 +13,8 @@
 .newPostBox {
     width: 80%;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 .cancelButton {
     position: absolute;
@@ -26,4 +28,16 @@
 }
 .editorBox{
     border: 1px solid black;
+}
+
+.postTitleText, .postDescriptionText {
+    font-size: larger;
+    margin-top: 20px;
+}
+.editor {
+    background-color: white;
+    color: black;
+}
+.postTitleInput {
+
 }

@@ -9,7 +9,6 @@ const handleSubmit = async (e) => {
     const auth = getAuth();
     const email = e.target[1].value; // get email
     const password = e.target[2].value // get password
-    console.log(email);
     createUserWithEmailAndPassword(auth, email, password).then((userCredentials) => {
         console.log("Signed In!");
         // navigate to home page after successful login
