@@ -33,7 +33,6 @@ const HomePage = (props) => {
             postData.forEach((doc) => {
                 tempPostData.push([doc.id, doc.data()])
             })
-            console.log(tempPostData)
             setPosts(tempPostData)
         })
     }

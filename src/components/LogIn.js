@@ -21,9 +21,7 @@ const LogIn = (props) => {
         const auth = getAuth();
         const email = e.target[0].value; // get email
         const password = e.target[1].value // get password
-        console.log(email, password);
         signInWithEmailAndPassword(auth, email, password).then((userCredentials) => {
-            console.log("Signed In!");
             setSuccess(true);
             // signed in
             // navigate to home page after successful login
