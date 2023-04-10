@@ -4,6 +4,7 @@ body {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background-color: #333333;
     color: whitesmoke;
+    margin-bottom: 50px
 }
 
 header {
@@ -11,12 +12,12 @@ header {
     top: 0;
     left: 0;
     right: 0;
-        background-color: #666666;
-        display: flex;
-        height: 50px;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 0px 1px 5px black;
+    background-color: #666666;
+    display: grid;
+    height: 50px;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    box-shadow: 0px 1px 5px black;
 }
 
 .appTitle, .logInLink {
@@ -32,6 +33,7 @@ header {
 .appTitle {
     font-size: 30px;
     transition: color .15s;
+    justify-content: start;
 }
 .appTitle:hover {
     color:orange;
@@ -46,17 +48,26 @@ header {
     color: orange;
     background-color: gray;
 }
-.signOutButton {
+.signOutButton, .logInLink {
     background-color: #666666;
     border: none;
     color: whitesmoke;
     font-size: 20px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     height: 100%;
+    margin-left: 80%;
 }
 .credits {
-    position: absolute;
+    position: fixed;
     bottom: 5px;
     right: 10px;
     
+}
+
+.filterWrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
 }

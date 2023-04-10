@@ -24,6 +24,7 @@ const NewEntry = (props => {
       const message = JSON.stringify(convertToRaw(editorState.getCurrentContent()))
       const date = new Date()
       const dateString = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear()
+      console.log(convertToRaw(editorState.getCurrentContent()))
       console.log(message)
       console.log(postTitle)
       const userPostsRef = collection(db, 'UserPosts');

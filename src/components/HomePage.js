@@ -9,8 +9,19 @@ import BlogView from './BlogView';
 
 
 const HomePage = (props) => {
-
-    const [posts, setPosts] = useState([])
+    const description = JSON.stringify({"blocks":[{"key":"904n","text":"THis is a sample description","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}})
+    const dummyPosts = [[1, {'Description' : description, 'Title': 'Test Title', 'Date': '2021-10-10'}],
+                [2, {'Description': description, 'Title': 'Test Title', 'Date': '2021-10-10'}],
+                [3, {'Description': description, 'Title': 'Test Title', 'Date': '2021-10-10'}],
+                [4, {'Description': description, 'Title': 'Test Title', 'Date': '2021-10-10'}],
+                [5, {'Description': description, 'Title': 'Test Title', 'Date': '2021-10-10'}],
+                [6, {'Description': description, 'Title': 'Test Title', 'Date': '2021-10-10'}],
+                [7, {'Description': description, 'Title': 'Test Title', 'Date': '2021-10-10'}],
+                [8, {'Description': description, 'Title': 'Test Title', 'Date': '2021-10-10'}],
+                [9, {'Description': description, 'Title': 'Test Title', 'Date': '2021-10-10'}]]
+    const [numDisplayed, setNumDisplayed] = useState(5)
+    const [numPosts, setNumPosts] = useState(9)
+    const [posts, setPosts] = useState(dummyPosts)
     const [isPostClicked, setIsPostClicked] = useState(false)
     const [postID, setPostID] = useState('')
     const [clickedDescription, setClickedDescription] = useState('')
@@ -33,32 +44,52 @@ const HomePage = (props) => {
             postData.forEach((doc) => {
                 tempPostData.push([doc.id, doc.data()])
             })
-            setPosts(tempPostData)
+            const orderedPosts = orderPostsByDate(tempPostData)
+            setPosts(orderedPosts)
+            setNumPosts(orderedPosts.length)
         })
     }
   }
+  const orderPostsByDate = (posts) => {
+    const orderedPosts = posts.sort((a, b) => {
+        const aDate = new Date(a[1]["Date"])
+        const bDate = new Date(b[1]["Date"])
+        return bDate - aDate
+    })
+    return orderedPosts
+  }
+
+  const showMorePosts = () => {
+    setNumDisplayed(numDisplayed + 16 > numPosts ? numPosts : numDisplayed + 16)
+  }
 
   useEffect(() => {
-    getPosts()
-  }, [postID, isPostClicked])
+    // getPosts()
+  })
 
     return(<>
         {isPostClicked ? 
             <BlogView description={clickedDescription} title={clickedTitle} setIsClicked={setIsPostClicked} postID={postID} date={clickedDate}/>
         :
         <>
-        <div className="titleRow"><h1>My Entries</h1><Link className="newEntryLink" to="/newEntry">New Entry</Link></div>
-        <div className="entryGrid" id='entryGrid'>
-        {posts.map((data) => (
-            <BlogEntry key={data[0]} postData={data} setFocus={setIsPostClicked} setDescription={setClickedDescription} setSelectedPostId={setPostID} setTitle={setClickedTitle} setDate={setClickedDate}/>
-        ))}
-    </div>
-    </>}
+          <Link className="newEntryLink" to="/newEntry">New Entry</Link>
+          <div className="entryGrid" id='entryGrid'>
+              {posts.slice(0, numDisplayed).map(data => (
+                  <BlogEntry key={data[0]} postData={data} setFocus={setIsPostClicked} setDescription={setClickedDescription} setSelectedPostId={setPostID} setTitle={setClickedTitle} setDate={setClickedDate}/>
+              ))}
+          </div>
+          {numPosts > numDisplayed ? 
+              <div className='morePostsButtonWrapper'><button className='morePostsButton' onClick={showMorePosts}>Show More Posts</button></div>
+              :
+              <></>
+              }
+        </>}
         </>
     )}
 
     const BlogEntry = ({postData, setFocus, setDescription, setTitle, setSelectedPostId, setDate}) => {
-        const blogDescription = postData[1]["Description"]
+        const blogDescription = postData[1].Description
+        console.log(blogDescription)
         const blogTitle = postData[1]["Title"]
         const dateString = postData[1]["Date"]
         const postID = postData[0]

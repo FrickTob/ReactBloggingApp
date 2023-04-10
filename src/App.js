@@ -40,7 +40,7 @@ const App = () => {
 
 
     return(
-    <>
+    <body>
         <NavBar isLoggedIn={loggedIn} />
         <Routes>
             <Route path = "/" element={<HomePage />} />
@@ -49,7 +49,7 @@ const App = () => {
             <Route path = "/newEntry" element={<NewEntry />}/>
         </Routes>
         <Footer />
-    </>);
+    </body>);
 }
 
 export default App;
